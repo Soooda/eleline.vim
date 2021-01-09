@@ -228,6 +228,12 @@ function! ElelineCoc() abort
   return ''
 endfunction
 
+" Ref: @theniceboy
+function! ElelineScroll() abort
+    if exists(ScrollStatus()) | return '' | endif
+    return ScrollStatus()
+endfunction
+
 function! s:def(fn) abort
   return printf('%%#%s#%%{%s()}%%*', a:fn, a:fn)
 endfunction
@@ -245,6 +251,7 @@ function! s:StatusLine() abort
   let l:lcn = '%{ElelineLCN()}'
   let l:coc = '%{ElelineCoc()}'
   let l:lsp = ''
+  let l:scroll = '%{ElelineScroll()}'
   let l:vista = '%#ElelineVista#%{ElelineVista()}%*'
   if empty(get(b:, 'vista_nearest_method_or_function', '')) && has('nvim-0.5')
       let l:lsp = '%{ElelineNvimLsp()}'
@@ -262,8 +269,12 @@ function! s:StatusLine() abort
   let l:enc = ' %{&fenc != "" ? &fenc : &enc} | %{&bomb ? ",BOM " : ""}'
   let l:ff = '%{&ff} %*'
   let l:pct = '%#Eleline9# %P %*'
-  return l:prefix.l:tot.'%<'.l:fsize.l:common
-        \ .'%='.l:m_r_f.l:pos.l:enc.l:ff.l:pct
+  if l:scroll != ''
+    let l:pct = ''
+    let l:scroll = '%#Eleline7#%'.l:scroll
+  endif
+  let l:common = l:paste.l:curfname.l:branch.' '.l:status.l:error.l:warning.l:tags.l:lcn.l:coc.l:vista
+  return l:common.'%='.l:m_r_f.l:pos.l:scroll:.l:fsize " .l:enc.l:ff.l:pct
 endfunction
 
 let s:colors = {
