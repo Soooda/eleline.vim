@@ -274,7 +274,7 @@ function! s:StatusLine() abort
     let l:scroll = '%#Eleline7#%'.l:scroll
   endif
   let l:common = l:paste.l:curfname.l:branch.' '.l:status.l:error.l:warning.l:tags.l:lcn.l:coc.l:vista
-  return l:common.'%='.l:m_r_f.l:pos.l:scroll:.l:fsize " .l:enc.l:ff.l:pct
+  return l:common.'%='.l:m_r_f.l:pos.l:scroll.l:fsize " .l:enc.l:ff.l:pct
 endfunction
 
 let s:colors = {
