@@ -228,7 +228,7 @@ function! ElelineCoc() abort
   return ''
 endfunction
 
-" @theniceboy
+" Reference: https://github.com/theniceboy/eleline.vim/blob/master/plugin/eleline.vim
 function! ElelineScroll() abort
     if !exists("*ScrollStatus") | return '' | endif
     return ScrollStatus()
@@ -271,7 +271,7 @@ function! s:StatusLine() abort
   let l:pct = '%#Eleline9# %P %*'
   if l:scroll != ''
     let l:pct = ''
-    let l:scroll = '%#Eleline7#%'.l:scroll
+    let l:scroll = '%#Eleline7#%*'.l:scroll
   endif
   let l:common = l:paste.l:curfname.l:branch.' '.l:status.l:error.l:warning.l:tags.l:lcn.l:coc.l:vista
   return l:common.'%='.l:m_r_f.l:pos.l:scroll.l:fsize " .l:enc.l:ff.l:pct
