@@ -228,7 +228,7 @@ function! ElelineCoc() abort
   return ''
 endfunction
 
-" Ref: @theniceboy
+" @theniceboy
 function! ElelineScroll() abort
     if !exists("*ScrollStatus") | return '' | endif
     return ScrollStatus()
