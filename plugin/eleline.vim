@@ -230,7 +230,7 @@ endfunction
 
 " Ref: @theniceboy
 function! ElelineScroll() abort
-    if exists(ScrollStatus()) | return '' | endif
+    if !exists("*ScrollStatus") | return '' | endif
     return ScrollStatus()
 endfunction
 
