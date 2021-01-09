@@ -1,6 +1,7 @@
 " =============================================================================
 " Filename: eleline.vim
 " Author: Liu-Cheng Xu
+" Fork: Soooda
 " URL: https://github.com/liuchengxu/eleline.vim
 " License: MIT License
 " =============================================================================
