@@ -17,7 +17,7 @@ function! s:OnFrame(...) abort
 endfunction
 
 function! eleline#LanguageClientNeovim() abort
-  let l:black_list = ['startify', 'nerdtree', 'fugitiveblame', 'gitcommit', 'vista']
+  let l:black_list = ['startify', 'nerdtree', 'fugitiveblame', 'gitcommit']
   if count(l:black_list, &filetype)
     return ''
   endif
