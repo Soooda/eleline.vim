@@ -46,13 +46,13 @@ function! ElelineFsize(f) abort
     return ''
   endif
   if l:size < 1024
-    let size = l:size.' bytes'
+    let size = l:size.' B'
   elseif l:size < 1024*1024
-    let size = printf('%.1f', l:size/1024.0).'KB'
+    let size = printf('%.1f', l:size/1024.0).'K'
   elseif l:size < 1024*1024*1024
-    let size = printf('%.1f', l:size/1024.0/1024.0) . 'MB'
+    let size = printf('%.1f', l:size/1024.0/1024.0) . 'M'
   else
-    let size = printf('%.1f', l:size/1024.0/1024.0/1024.0) . 'GB'
+    let size = printf('%.1f', l:size/1024.0/1024.0/1024.0) . 'G'
   endif
   return '  '.size.' '
 endfunction
@@ -265,7 +265,7 @@ function! s:StatusLine() abort
   let l:tot = s:def('ElelineTotalBuf')
   let l:fsize = '%#ElelineFsize#%{ElelineFsize(@%)}%*'
   let l:m_r_f = '%#Eleline7# %m%r%y %*'
-  let l:pos = '%#Eleline8# '.(s:font?"\ue0a1":'').'Ln:%l/%L Col:%c%V '
+  let l:pos = '%#Eleline8# '.(s:font?"\ue0a1":'').'Ln:%l/%L Col:%c%V |'
   let l:enc = ' %{&fenc != "" ? &fenc : &enc} | %{&bomb ? ",BOM " : ""}'
   let l:ff = '%{&ff} %*'
   let l:pct = '%#Eleline9# %P %*'
